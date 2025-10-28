@@ -1,1 +1,39 @@
+ion-tab-bar {
+  // 1. Fondo y colores
+  --background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%); // Un fondo degradado
+  --border: 0;
+  --color: rgba(255, 255, 255, 0.7); // Blanco semitransparente para inactivos
+  --color-selected: #ffffff; // Blanco brillante para el activo
 
+  // 2. Efecto flotante
+  box-shadow: 0 -4px 15px rgba(79, 172, 254, 0.4);
+  border-radius: 25px 25px 0 0;
+  padding: 5px 0;
+  margin: 0;
+
+  // 3. Personalizar los botones
+  ion-tab-button {
+    --background: transparent; // Fondo transparente para cada botón
+    --background-focused: rgba(255, 255, 255, 0.1); // Sutil efecto al presionar
+    --ripple-color: rgba(255, 255, 255, 0.5); // Color del efecto ripple (ondas)
+
+    // Transición suave para los iconos
+    ion-icon {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    // Efecto al estar activo: el icono crece un poco
+    &.tab-selected {
+      ion-icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  // 4. Estilo de las etiquetas
+  ion-label {
+    font-size: 0.7rem; // Texto un poco más pequeño
+    font-weight: 600; // Negrita
+    letter-spacing: 0.5px; // Espaciado entre letras
+  }
+}
