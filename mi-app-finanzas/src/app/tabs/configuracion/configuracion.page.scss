@@ -1,0 +1,11 @@
+.warning-card {
+  background-color: #fff3cd; /* Fondo amarillo pálido */
+  border-left: 5px solid #ffc107; /* Borde izquierdo amarillo fuerte */
+  border-radius: 8px;
+}
+
+// También podemos personalizar el botón
+.custom-danger-button {
+  --border-radius: 10px; /* Bordes más redondeados */
+  font-weight: bold;
+}
