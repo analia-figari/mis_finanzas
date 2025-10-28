@@ -12,6 +12,19 @@
   </ion-header>
 
   <div class="ion-padding">
-    <p>Aquí irán las opciones de configuración.</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Warning!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          Si reinicias los datos, se borrarán permanentemente todos tus ingresos y egresos registrados.
+        </p>
+        <ion-button expand="block" fill="outline" color="danger" (click)="confirmResetData()">
+          <ion-icon name="warning" slot="start"></ion-icon>
+          Reiniciar Todos los Datos
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

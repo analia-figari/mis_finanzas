@@ -12,7 +12,34 @@
   </ion-header>
 
   <div class="ion-padding">
-    <h1>¡Bienvenido a tu App de Finanzas!</h1>
-    <p>Aquí verás un resumen de tu saldo total.</p>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Saldo Actual</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- 
+          La magia está aquí:
+          - El pipe 'async' se suscribe automáticamente al Observable.
+          - El pipe 'currency' formatea el número como dinero.
+          - [ngClass] cambia el color del texto a verde (positivo) o rojo (negativo).
+        -->
+       <!-- Usamos un contenedor con *ngIf para manejar el valor nulo inicial -->
+    <<div *ngIf="totalBalance$ | async as balance">
+      <h1 class="balance" [ngClass]="{'positive': balance >= 0, 'negative': balance < 0}">
+          {{ balance | currency:'USD':'symbol':'1.2-2' }}
+      </h1>
+    </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Resumen Rápido</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>¡Bienvenido a tu App de Finanzas!</p>
+        <p>Usa la pestaña "Registrar" para añadir tus ingresos y egresos.</p>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

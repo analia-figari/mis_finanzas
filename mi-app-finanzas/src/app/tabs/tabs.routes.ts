@@ -9,11 +9,11 @@ import { ConfiguracionPage } from './configuracion/configuracion.page';
 
 export const TabsRoutes: Routes = [
   {
-    path: 'tabs',
+    path: '', // <-- ¡MUY IMPORTANTE! La ruta principal debe ser un string vacío.
     component: TabsPage,
     children: [
       {
-        path: 'inicio',
+        path: 'inicio', // Esta es la ruta para la pestaña de inicio
         component: InicioPage,
       },
       {
@@ -30,9 +30,9 @@ export const TabsRoutes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/inicio',
-        pathMatch: 'full',
-      },
-    ],
-  },
+        redirectTo: 'inicio', // Si alguien va a /tabs, redirige a /tabs/inicio
+        pathMatch: 'full'
+      }
+    ]
+  }
 ];

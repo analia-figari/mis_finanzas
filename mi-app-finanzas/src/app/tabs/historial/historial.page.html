@@ -12,6 +12,37 @@
   </ion-header>
 
   <div class="ion-padding">
-    <p>Aquí aparecerá la lista de todos tus movimientos.</p>
+    <!-- Si no hay movimientos, mostramos un mensaje -->
+    <div *ngIf="!(movements$ | async)?.length">
+      <p>No hay movimientos registrados aún.</p>
+    </div>
+
+    <!-- Si hay movimientos, los listamos -->
+    <ion-list>
+      <!-- El 'async' pipe se suscribe automáticamente y 'let movement' recorre cada elemento -->
+      <ion-item-sliding *ngFor="let movement of (movements$ | async)">
+        <ion-item>
+          <ion-icon [name]="movement.type === 'income' ? 'trending-up' : 'trending-down'" 
+                     [color]="movement.type === 'income' ? 'success' : 'danger'" 
+                     slot="start">
+          </ion-icon>
+          
+          <ion-label>
+            <h2>{{ movement.description }}</h2>
+            <p>{{ movement.category }} - {{ movement.date | date:'shortDate' }}</p>
+          </ion-label>
+
+          <ion-note slot="end" [color]="movement.type === 'income' ? 'success' : 'danger'">
+            {{ movement.type === 'income' ? '+' : '-' }} {{ movement.amount | currency:'USD':'symbol':'1.2-2' }}
+          </ion-note>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteMovement(movement)">
+            <ion-icon slot="icon-only" name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
   </div>
 </ion-content>

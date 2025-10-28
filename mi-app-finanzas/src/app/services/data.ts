@@ -1,4 +1,4 @@
-// src/app/services/data.service.ts
+// src/app/services/data.ts
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -49,11 +49,22 @@ export class DataService {
     return newMovement;
   }
 
+  // esta funcion elimina los movimientos en el historial
+  async deleteMovement(id: string) {
+    this.movements = this.movements.filter(m => m.id !== id);
+    await this.saveMovements();
+  }
+
   private async saveMovements() {
     await this.storage.set('movements', this.movements);
     this.movementsSubject.next([...this.movements]);
   }
 
+  
+  async resetData() {// Esta funcion resetea en la parte de configuracion
+    this.movements = [];
+    await this.saveMovements();
+  }
   private generateId(): string {
     return Date.now().toString(36) + Math.random().toString(36).substr(2);
   }

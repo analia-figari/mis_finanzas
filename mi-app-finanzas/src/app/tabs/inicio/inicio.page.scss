@@ -1,0 +1,14 @@
+// src/app/tabs/inicio/inicio.page.scss
+.balance {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.positive {
+  color: var(--ion-color-success); // Verde
+}
+
+.negative {
+  color: var(--ion-color-danger); // Rojo
+}

@@ -1,13 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>registrar-movimiento</ion-title>
+    <ion-title>Registrar Movimiento</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registrar-movimiento</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="ion-padding">
+    <form #form="ngForm" (ngSubmit)="submitMovement()">
+      
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-input type="text" name="description" [(ngModel)]="movement.description" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Monto</ion-label>
+        <ion-input type="number" name="amount" [(ngModel)]="movement.amount" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-radio-group name="type" [(ngModel)]="movement.type">
+          <ion-item>
+            <ion-label>Ingreso 💰</ion-label>
+            <ion-radio slot="start" value="income"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>Egreso 💸</ion-label>
+            <ion-radio slot="start" value="expense"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Categoría</ion-label>
+        <ion-select name="category" [(ngModel)]="movement.category">
+          <ion-select-option value="Comida">🍔 Comida</ion-select-option>
+          <ion-select-option value="Transporte">🚗 Transporte</ion-select-option>
+          <ion-select-option value="Salario">💼 Salario</ion-select-option>
+          <ion-select-option value="Otros">📦 Otros</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <div class="ion-margin-top">
+        <ion-button type="submit" expand="block" [disabled]="!form.valid">
+          Guardar Movimiento
+        </ion-button>
+      </div>
+    </form>
+  </div>
 </ion-content>
