@@ -11,7 +11,7 @@ import { ConfiguracionPage } from "../configuracion/configuracion.page";
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, ConfiguracionPage] // CommonModule es necesario para el pipe 'async'
+  imports: [IonicModule, CommonModule] // CommonModule es necesario para el pipe 'async'
  // CommonModule es necesario para el pipe 'async'
 })
 export class InicioPage implements OnInit {
